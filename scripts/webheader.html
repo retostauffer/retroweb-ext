@@ -1,10 +1,10 @@
 <script>
 (function($) {
 
-    function retroweb_webheader_carousel() {
+    function rotorweb_webheader_carousel() {
         /* First: create new fluid container to palce the webheader */
         var fluid = $("<div class='container-fluid webheader'></div>").insertBefore($("#quarto-content"));
-        var elemID = "retroweb_webheader_carousel"
+        var elemID = "rotorweb_webheader_carousel"
 
         /* Ensure that we only find it once? */
         var res = "<div id='" + elemID + "' class='carousel slide' data-ride='carousel'>\n"
@@ -23,7 +23,7 @@
         $(nav).appendTo("#" + elemID)
         var inner = $("#" + elemID).find(".carousel-inner");
         var ind   = $("<civ class='carousel-indicators'></div>").insertBefore(inner);
-        $.each($(retroweb_webheader_images), function(k, v) {
+        $.each($(rotorweb_webheader_images), function(k, v) {
             /* adding image (carousel-item) */
             var tmp = $("<div class='carousel-item'>").appendTo(inner);
             $("<img class='d-block w-100' src='" + v["image"] + "'>").appendTo(tmp)
@@ -39,28 +39,28 @@
         });
 
          console.log('xx')
-        $("#headerCarousel").carousel({interval: retroweb_webheader_options["interval"]}).carousel("cycle")
+        $("#headerCarousel").carousel({interval: rotorweb_webheader_options["interval"]}).carousel("cycle")
     }
 
-    function retroweb_webheader_image() {
+    function rotorweb_webheader_image() {
         /* First: create new fluid container to palce the webheader */
-        var elemID = "retroweb_webheader_image";
+        var elemID = "rotorweb_webheader_image";
         var fluid  = $("<div id='" + elemID + "' class='container-fluid webheader'></div>").insertBefore($("#quarto-content"));
         /* If there are multiple images defined: take random one */
-        var idx = parseInt(Math.random() * retroweb_webheader_images.length);
+        var idx = parseInt(Math.random() * rotorweb_webheader_images.length);
 
-        $("<img id='" + elemID + "' class = 'img-contained' src='" + retroweb_webheader_images[idx].image + "'></img>").appendTo(fluid)
+        $("<img id='" + elemID + "' class = 'img-contained' src='" + rotorweb_webheader_images[idx].image + "'></img>").appendTo(fluid)
         console.log(idx)
-        console.log(retroweb_webheader_images)
+        console.log(rotorweb_webheader_images)
     }
 
 
     $(document).ready(function() {
-            console.log(retroweb_webheader_type)
-        if (retroweb_webheader_type == "carousel") {
-            retroweb_webheader_carousel()
-        } else if (retroweb_webheader_type == "image") {
-            retroweb_webheader_image()
+            console.log(rotorweb_webheader_type)
+        if (rotorweb_webheader_type == "carousel") {
+            rotorweb_webheader_carousel()
+        } else if (rotorweb_webheader_type == "image") {
+            rotorweb_webheader_image()
         }
     });
 })(jQuery);

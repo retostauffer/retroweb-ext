@@ -2,7 +2,7 @@
 
 -- Simply includes jquery-*.min.js dependency
 local function ensureHtmlDeps()
-    print("[Retroweb]: Adding jQuery 3.6.0")
+    print("[Rotorweb]: Adding jQuery 3.6.0")
     quarto.doc.addHtmlDependency({
         name = "jquery",
         version = "3.6.0",

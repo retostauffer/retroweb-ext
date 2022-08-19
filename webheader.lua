@@ -3,7 +3,7 @@
 
 local function webheader(meta)
 
-    print("[Retroweb]: Executing header manipulation filter")
+    print("[Rotorweb]: Executing header manipulation filter")
 
     -- If we find a carousel definition: add carousel
     -- Note that we are only adding a variable 'header_carousel_images' to
@@ -15,7 +15,7 @@ local function webheader(meta)
             type = pandoc.utils.stringify(meta.webheader.type)
         end -- end parsing type
         if meta.webheader.images == nil then
-            print("[Retroweb]: webheader does not contain any images. Ignore.")
+            print("[Rotorweb]: webheader does not contain any images. Ignore.")
         else
             -- User has chosen to display a carousel header
             if (type == "carousel") or (type == "image") then
@@ -26,7 +26,7 @@ local function webheader(meta)
                     interval = pandoc.utils.stringify(meta.webheader.options.interval)
                 end
 
-                local res = "<script>\nvar retroweb_webheader_images = ["
+                local res = "<script>\nvar rotorweb_webheader_images = ["
                 for k,img in pairs(meta.webheader.images) do
                     local image   = nil
                     local alt     = "NULL" -- javascript NULL value (default)
@@ -42,8 +42,8 @@ local function webheader(meta)
                 end
                 res = res .. "];\n"
 
-                res = res .. "var retroweb_webheader_type = '" .. type .."'\n"
-                res = res .. "var retroweb_webheader_options = {interval: " .. interval .. "}\n"
+                res = res .. "var rotorweb_webheader_type = '" .. type .."'\n"
+                res = res .. "var rotorweb_webheader_options = {interval: " .. interval .. "}\n"
                 res = res .. "</script>\n"
 
                 quarto.doc.includeText("in-header", res)
@@ -53,7 +53,7 @@ local function webheader(meta)
             elseif type == "image" then
                 print("FOUND HEADER IMAGE")
             else
-                print("[Retroweb]: wehbheader type `" .. type .. "` unknown. Ignored.")
+                print("[Rotorweb]: wehbheader type `" .. type .. "` unknown. Ignored.")
             end
         end -- end meta.webheader.images not nil
     end -- end meta.webheader not nil
