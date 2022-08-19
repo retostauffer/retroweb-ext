@@ -1,9 +1,20 @@
 
+function test(x)
+    print("TESTING")
+end
 
 
 local function webheader(meta)
 
     print("[Retroweb]: Executing header manipulation filter")
+
+    function to_json(key, value)
+        if value == nil then
+            return key .. ": null"
+        else
+            return key .. ": '" .. value .. "'"
+        end
+    end
 
     -- If we find a carousel definition: add carousel
     -- Note that we are only adding a variable 'header_carousel_images' to
@@ -28,15 +39,29 @@ local function webheader(meta)
 
                 local res = "<script>\nvar retroweb_webheader_images = ["
                 for k,img in pairs(meta.webheader.images) do
-                    local image   = nil
-                    local alt     = "NULL" -- javascript NULL value (default)
-                    local caption = "NULL" -- javascript NULL value (default)
-                    if img.image   ~= nil then image   = pandoc.utils.stringify(img.image);   end
-                    if img.alt     ~= nil then alt     = pandoc.utils.stringify(img.alt);     end
-                    if img.caption ~= nil then caption = pandoc.utils.stringify(img.caption); end
+                    -- parsing image with all its tags
+                    -- nil (lua's null value) will be converted to JSON 'null' in to_json
+                    local image       = nil
+                    local alt         = nil
+                    local title       = nil
+                    local description = nil
+                    local icon        = nil
+                    local bg          = nil
+                    if img.image       ~= nil then image       = pandoc.utils.stringify(img.image);       end
+                    if img.alt         ~= nil then alt         = pandoc.utils.stringify(img.alt);         end
+                    if img.title       ~= nil then title       = pandoc.utils.stringify(img.title);       end
+                    if img.description ~= nil then description = pandoc.utils.stringify(img.description); end
+                    if img.icon        ~= nil then icon        = pandoc.utils.stringify(img.icon);        end
+                    if img.bg          ~= nil then bg          = pandoc.utils.stringify(img.bg);          end
+
                     -- image defined?
                     if not image ~= nil then
-                        res = res .. "{image: '" .. image .. "', alt: '" .. alt .. "', caption: '" .. caption .. "'}, "
+                        res = res .. "{" .. to_json("image", image) .. ", "
+                                         .. to_json("alt", alt) .. ", "
+                                         .. to_json("title", title) .. ", "
+                                         .. to_json("description", description) .. ", "
+                                         .. to_json("icon", icon) .. ", "
+                                         .. to_json("bg", bg) .. "}, "
                         quarto.utils.resolvePath(image)
                     end
                 end

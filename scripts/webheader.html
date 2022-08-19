@@ -23,23 +23,52 @@
         $(nav).appendTo("#" + elemID)
         var inner = $("#" + elemID).find(".carousel-inner");
         var ind   = $("<civ class='carousel-indicators'></div>").insertBefore(inner);
-        $.each($(retroweb_webheader_images), function(k, v) {
+        $.each($(retroweb_webheader_images), function(k, rec) {
+
             /* adding image (carousel-item) */
             var tmp = $("<div class='carousel-item'>").appendTo(inner);
-            $("<img class='d-block w-100' src='" + v["image"] + "'>").appendTo(tmp)
-            $("<div class='carousel-caption d-none d-md-block'><h1>" + v.caption +
-              "</h3></div>").appendTo(tmp)
-            if (k < 1) { $(tmp).addClass("active"); }
+            var img = $("<img class='d-block w-100' src='" + rec["image"] + "'>").appendTo(tmp)
+            if (rec.alt) { $(img).prop("alt", rec.alt); }
+
+            /* Adding title + caption or icon + title + caption (gridded) */
+            var cap = $("<div class='carousel-caption d-none d-md-block'>" +
+                        "  <div class='container-fluid'>" +
+                        "    <div class='grid'></div>" +
+                        "  </div>" +
+                        "</div>").appendTo(tmp)
+            var grd = $(cap).find(".grid")
+            if (rec.icon === null) {
+                $("<div class='g-col-12'></div>").appendTo(grd)
+            } else {
+                $("<div class='g-col-2'>" +
+                  "  <img class='icon' src='" + rec.icon + "'>" +
+                  "</div>" +
+                  "<div class='g-col-10'></div>").appendTo(grd)
+            } 
+
+            /* Appending title and caption, apply bakcground color (if specified ) */
+            if (rec.title) {
+                $("<div class='caption-title'></div>")
+                        .appendTo($(grd).children("div:last")).html(rec.title);
+            }
+            if (rec.description) {
+                $("<div class='caption-description'></div>")
+                        .appendTo($(grd).children("div:last")).html(rec.description);
+            }
+            if (rec.bg) { $(cap).css("background-color", rec.bg) }
 
             /* adding indicator */
-            var tmp = $("<button type='button' data-bs-target='#" + elemID +
-                        "' data-bs-slide-to='" + k + "'></button>").appendTo(ind);
-            if (k < 1) { $(tmp).addClass("active"); }
+            $("<button type='button' data-bs-target='#" + elemID +
+              "' data-bs-slide-to='" + k + "'></button>").appendTo(ind);
 
         });
 
-         console.log('xx')
-        $("#headerCarousel").carousel({interval: retroweb_webheader_options["interval"]}).carousel("cycle")
+        /* Make first image and indicator active */
+        $("#" + elemID + " .carousel-item:first").addClass("active")
+        $("#" + elemID + " .carousel-indicators button:first").addClass("active")
+
+
+        $("#" + elemID).carousel({interval: retroweb_webheader_options["interval"]}).carousel("cycle")
     }
 
     function retroweb_webheader_image() {
@@ -49,7 +78,7 @@
         /* If there are multiple images defined: take random one */
         var idx = parseInt(Math.random() * retroweb_webheader_images.length);
 
-        $("<img id='" + elemID + "' class = 'img-contained' src='" + retroweb_webheader_images[idx].image + "'></img>").appendTo(fluid)
+        $("<img id='" + elemID + "' class = 'img-contained' src='" + retroweb_webheader_images[idx].image + "'>").appendTo(fluid)
         console.log(idx)
         console.log(retroweb_webheader_images)
     }

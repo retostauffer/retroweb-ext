@@ -26,6 +26,29 @@ $dark: #343a40;
     .carousel-item {
         max-height: 15em;
     }
+
+    .carousel-caption {
+        right: 0;
+        left: 0;
+        width: 100%;
+        .caption-title {
+            font-size: 2em;
+            color: #fff;
+        }
+        .caption-description {
+            font-size: 1.5em;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        .grid {
+            position: relative;
+            width: 60%;
+            left: 20%;
+            right: 20%;
+            img {
+                max-width: 100%;
+            }
+        }
+    }
 }
 
 #retroweb_webheader_image {
