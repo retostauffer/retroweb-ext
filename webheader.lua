@@ -22,6 +22,7 @@ local function webheader(meta)
                 -- Evaluate carousel options
                 -- Defaults:
                 local interval = 2000;  -- default intreval speed (milliseconds)
+                print('xxx')
                 if meta.webheader.options.interval ~= nil then
                     interval = pandoc.utils.stringify(meta.webheader.options.interval)
                 end
