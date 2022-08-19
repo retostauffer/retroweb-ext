@@ -1,8 +1,14 @@
 
 function blockcarousel(args, kwargs)
 
+    function random_id(len)
+        local res = "carousel-"
+        for i = 1, len do res = res .. string.char(math.random(97, 122)); end
+        return res
+    end
+
     local id = pandoc.utils.stringify(kwargs["id"])
-    if #id == 0 then id = "defaultCarousel"; end
+    if #id == 0 then id = random_id(6); end
 
     -- Building bootstrap carousel
     local div_head = "<div id=\"" .. id .. "\" class=\"carousel slide\" data-bs-ride=\"carousel\">" ..
