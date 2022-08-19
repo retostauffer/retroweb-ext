@@ -1,10 +1,12 @@
 
 /*-- scss:defaults --*/
 $primary: #2984b3;
+$secondary: #049733;
 $dark: #0c1826;
+
+$code-color: #049733; /* currentily identical to secondary */
+$code-bg:    #f6f9fa;
 /*
-$primary: #25408f;
-$secondary: #8f5325;
 $success: #3e8d63;
 $info: #13101c;
 $warning: #945707;
@@ -78,6 +80,19 @@ nav {
     }
 }
 
+main.content {
+    pre {
+        > code {
+            border-left: 0.25rem solid $primary;
+            padding: 0.5em 1em;
+            background-color: $code-bg;
+            color: $code-color;
+            &:hover {
+                border-color: $secondary;
+            }
+        }
+    }
+}
 
 /*-- scss:mixins --*/
 
