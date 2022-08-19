@@ -32,7 +32,7 @@ local function webheader(meta)
             if (type == "carousel") or (type == "image") then
                 -- Evaluate carousel options
                 -- Defaults:
-                local interval = 2000;  -- default intreval speed (milliseconds)
+                local interval = 4000;  -- default intreval speed (milliseconds)
                 if meta.webheader.options ~= nil and meta.webheader.options.interval ~= nil then
                     interval = pandoc.utils.stringify(meta.webheader.options.interval)
                 end
