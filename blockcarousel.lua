@@ -5,8 +5,7 @@ function blockcarousel(args, kwargs)
     if #id == 0 then id = "defaultCarousel"; end
 
     -- Building bootstrap carousel
-    local div_head = "CAROUSEL" ..
-                     "<div id=\"" .. id .. "\" class=\"carousel slide\" data-bs-ride=\"carousel\">" ..
+    local div_head = "<div id=\"" .. id .. "\" class=\"carousel slide\" data-bs-ride=\"carousel\">" ..
                      "  <div class=\"carousel-inner\">"
     local div_tail = "  </div>" ..
                      "  <button class=\"carousel-control-prev\" type=\"button\" data-bs-target=\"#" .. id .. "\" data-bs-slide=\"prev\">" ..
