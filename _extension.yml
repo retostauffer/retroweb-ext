@@ -3,7 +3,7 @@
 
 title: "Rotorweb: Website Theme"
 author: "Reto Stauffer"
-version: 0.0.3
+version: 0.0.5
 
 contributes:
   shortcodes:

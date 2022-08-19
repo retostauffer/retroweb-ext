@@ -23,7 +23,7 @@
         $(nav).appendTo("#" + elemID)
         var inner = $("#" + elemID).find(".carousel-inner");
         var ind   = $("<civ class='carousel-indicators'></div>").insertBefore(inner);
-        $.each($(retroweb_webheader_images), function(k, rec) {
+        $.each($(rotorweb_webheader_images), function(k, rec) {
             /* adding image (carousel-item) */
             var tmp = $("<div class='carousel-item'>").appendTo(inner);
             var img = $("<img class='d-block w-100' src='" + rec["image"] + "'>").appendTo(tmp)
@@ -67,7 +67,7 @@
         $("#" + elemID + " .carousel-indicators button:first").addClass("active")
 
 
-        $("#" + elemID).carousel({interval: retroweb_webheader_options["interval"]}).carousel("cycle")
+        $("#" + elemID).carousel({interval: rotorweb_webheader_options["interval"]}).carousel("cycle")
     }
 
     function rotorweb_webheader_image() {
