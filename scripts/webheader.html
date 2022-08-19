@@ -1,0 +1,67 @@
+<script>
+(function($) {
+
+    function retroweb_webheader_carousel() {
+        /* First: create new fluid container to palce the webheader */
+        var fluid = $("<div class='container-fluid webheader'></div>").insertBefore($("#quarto-content"));
+        var elemID = "retroweb_webheader_carousel"
+
+        /* Ensure that we only find it once? */
+        var res = "<div id='" + elemID + "' class='carousel slide' data-ride='carousel'>\n"
+                + "  <div class='carousel-inner'></div>\n"
+                + "</div>"
+
+        // Navigation
+        var nav = "<button class='carousel-control-prev' type='button' data-bs-target='#" + elemID + "' data-bs-slide='prev'>"
+                + "  <span class='carousel-control-prev-icon' aria-hidden='true'></span>"
+                + "</button>"
+                + "<button class='carousel-control-next' type='button' data-bs-target='#" + elemID + "' data-bs-slide='next'>"
+                + "  <span class='carousel-control-next-icon' aria-hidden='true'></span>"
+                + "</button>"
+
+        $(res).appendTo(fluid)
+        $(nav).appendTo("#" + elemID)
+        var inner = $("#" + elemID).find(".carousel-inner");
+        var ind   = $("<civ class='carousel-indicators'></div>").insertBefore(inner);
+        $.each($(retroweb_webheader_images), function(k, v) {
+            /* adding image (carousel-item) */
+            var tmp = $("<div class='carousel-item'>").appendTo(inner);
+            $("<img class='d-block w-100' src='" + v["image"] + "'>").appendTo(tmp)
+            $("<div class='carousel-caption d-none d-md-block'><h1>" + v.caption +
+              "</h3></div>").appendTo(tmp)
+            if (k < 1) { $(tmp).addClass("active"); }
+
+            /* adding indicator */
+            var tmp = $("<button type='button' data-bs-target='#" + elemID +
+                        "' data-bs-slide-to='" + k + "'></button>").appendTo(ind);
+            if (k < 1) { $(tmp).addClass("active"); }
+
+        });
+
+         console.log('xx')
+        $("#headerCarousel").carousel({interval: retroweb_webheader_options["interval"]}).carousel("cycle")
+    }
+
+    function retroweb_webheader_image() {
+        /* First: create new fluid container to palce the webheader */
+        var elemID = "retroweb_webheader_image";
+        var fluid  = $("<div id='" + elemID + "' class='container-fluid webheader'></div>").insertBefore($("#quarto-content"));
+        /* If there are multiple images defined: take random one */
+        var idx = parseInt(Math.random() * retroweb_webheader_images.length);
+
+        $("<img id='" + elemID + "' class = 'img-contained' src='" + retroweb_webheader_images[idx].image + "'></img>").appendTo(fluid)
+        console.log(idx)
+        console.log(retroweb_webheader_images)
+    }
+
+
+    $(document).ready(function() {
+            console.log(retroweb_webheader_type)
+        if (retroweb_webheader_type == "carousel") {
+            retroweb_webheader_carousel()
+        } else if (retroweb_webheader_type == "image") {
+            retroweb_webheader_image()
+        }
+    });
+})(jQuery);
+</script>

@@ -1,0 +1,17 @@
+
+
+
+title: "Retroweb: Website Theme"
+author: "Reto Stauffer"
+version: 0.0.3
+
+contributes:
+  shortcodes:
+    - blockcarousel.lua
+  formats:
+    html:
+      theme: style.scss
+      filters:
+        - jquery.lua
+        - webheader.lua
+

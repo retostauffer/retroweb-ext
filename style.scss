@@ -1,0 +1,87 @@
+
+/*-- scss:defaults --*/
+$primary: #2984b3;
+$dark: #0c1826;
+/*
+$primary: #25408f;
+$secondary: #8f5325;
+$success: #3e8d63;
+$info: #13101c;
+$warning: #945707;
+$danger: #d62518;
+$light: #f8f9fa;
+$dark: #343a40;
+*/
+
+
+/*-- scss:rules --*/
+#retroweb_webheader_carousel {
+    max-height: 15em;
+    .carousel-inner {
+        max-height: 15em;
+        border-bottom: 0.3em solid $body-bg;
+    }
+    .carousel-item {
+        max-height: 15em;
+    }
+}
+
+#retroweb_webheader_image {
+    height: 15em;
+    max-height: 15em;
+    overflow: hidden;
+    img {
+        object-fit: cover;
+        object-position: 50% 0;
+        width: 100% !important;
+        max-height: 15em;
+    }
+}
+
+nav {
+    .navbar-container {
+        .navbar-brand {
+            padding: 0 1em 0 0;
+            margin: 0;
+            img {
+                max-height: 50px;
+            }
+            span {
+                color: $dark;
+                position: relative;
+                top: 0.1em;
+            }
+        }
+    }
+}
+
+.nav-footer {
+    div {
+        .footer-items {
+            display: inline;
+            .nav-item {
+                text-align: left;
+                padding: 0;
+                margin: 0;
+                font-weight: bold;
+                text-transform: uppercase;
+                color: $primary;
+            }
+            .nav-link {
+                text-transform: none;
+                font-weight: normal;
+                padding: 0;
+                margin: 0;
+                color: $dark;
+            }
+        }
+    }
+}
+
+
+/*-- scss:mixins --*/
+
+/*-- scss:functions --*/
+
+/*-- scss:uses --*/
+
