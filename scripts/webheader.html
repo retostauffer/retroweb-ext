@@ -1,10 +1,35 @@
 <script>
 (function($) {
 
+    /* If the user uses the quarto Title Block feature the
+     * element #title-block-header is a header element. If so,
+     * remove. Else do nothing.
+     * Rotorweb does this as it will add it's own header for the
+     * webheader feature. */
+    function remove_title_block_is_header() {
+       var tmp = $("#title-block-header");
+       var res = false // default
+       if ($(tmp).is("header")) {
+           res = true; $(tmp).remove()
+       }
+       return res;
+    }
+
+    /* Add custom <header> element with id #rotorweb-title-block-header
+     * for the webheader feature. For both, type: carousel and type: image.
+     * Returns the element added for further processing */
+    function add_webheader_header() {
+        return $("<header id='rotorweb-title-block-header' class='webheader'></header>").insertAfter("#quarto-header");
+    }
+
     function rotorweb_webheader_carousel() {
-        /* First: create new fluid container to palce the webheader */
-        var fluid = $("<div class='container-fluid webheader'></div>").insertBefore($("#quarto-content"));
-        var elemID = "rotorweb_webheader_carousel"
+
+        /* See description of corresponding functions for details */
+        remove_title_block_is_header()
+        var target = add_webheader_header()
+
+        /* Append additional <header> to take up the rotorweb webheader */
+        var elemID = "rotorweb-webheader-carousel"
 
         /* Ensure that we only find it once? */
         var res = "<div id='" + elemID + "' class='carousel slide' data-ride='carousel'>\n"
@@ -19,7 +44,7 @@
                 + "  <span class='carousel-control-next-icon' aria-hidden='true'></span>"
                 + "</button>"
 
-        $(res).appendTo(fluid)
+        $(res).appendTo(target)
         $(nav).appendTo("#" + elemID)
         var inner = $("#" + elemID).find(".carousel-inner");
         var ind   = $("<civ class='carousel-indicators'></div>").insertBefore(inner);
@@ -71,8 +96,13 @@
     }
 
     function rotorweb_webheader_image() {
+
+        /* See description of corresponding functions for details */
+        remove_title_block_is_header()
+        add_webheader_header()
+
         /* First: create new fluid container to palce the webheader */
-        var elemID = "rotorweb_webheader_image";
+        var elemID = "rotorweb-webheader-image";
         var fluid  = $("<div id='" + elemID + "' class='container-fluid webheader'></div>").insertBefore($("#quarto-content"));
         /* If there are multiple images defined: take random one */
         var idx = parseInt(Math.random() * rotorweb_webheader_images.length);
