@@ -1,0 +1,6 @@
+{
+    "name": "Rotorweb, Quarto theme extension",
+    "dependencies": {
+        "jquery": "^3.6.0"
+    }
+}

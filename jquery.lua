@@ -6,7 +6,7 @@ local function ensureHtmlDeps()
     quarto.doc.addHtmlDependency({
         name = "jquery",
         version = "3.6.0",
-        scripts = {"assets/jquery-3.6.0.min.js"}
+        scripts = {"node_modules/jquery/dist/jquery.min.js", "node_modules/jquery/dist/jquery.min.map"}
     })
 end
 
