@@ -1,0 +1,10 @@
+<script>
+(function($) {
+    $(document).ready(function() {
+        var elems = $("ul > li .fa-li")
+        $.each(elems, function(k, v) {
+                $(v).closest("li").addClass("fali")
+        });
+    });
+})(jQuery);
+</script>
