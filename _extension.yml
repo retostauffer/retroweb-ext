@@ -8,10 +8,15 @@ version: 0.0.5
 contributes:
   shortcodes:
     - blockcarousel.lua
+    - fontawesome.lua
   formats:
     html:
-      theme: style.scss
+      theme:
+        - style.scss
+      css:
+        - node_modules/@fortawesome/fontawesome-free/css/all.min.css
       filters:
-        - jquery.lua
-        - webheader.lua
+        - jquery-filter.lua
+        - webheader-filter.lua
+        - fontawesome-filter.lua
 

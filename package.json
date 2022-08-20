@@ -1,6 +1,13 @@
 {
     "name": "Rotorweb, Quarto theme extension",
+    "homepage": "https://github.com/retostauffer/rotorweb-ext",
+    "issues": "https://github.com/retostauffer/rotorweb-ext/issues",
+    "license": {
+        "type": "GPL-3+",
+        "url": "https://www.gnu.org/licenses/gpl-3.0.en.html"
+    },
     "dependencies": {
+        "@fortawesome/fontawesome-free": "^6.1.2",
         "jquery": "^3.6.0"
     }
 }

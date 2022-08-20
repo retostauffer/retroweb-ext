@@ -1,7 +1,7 @@
 
 local function webheader(meta)
 
-    print("[Rotorweb]: Executing header manipulation filter")
+    -- print("[Rotorweb] Executing header manipulation filter")
 
     function to_json(key, value)
         if value == nil then
@@ -21,7 +21,7 @@ local function webheader(meta)
             type = pandoc.utils.stringify(meta.webheader.type)
         end -- end parsing type
         if meta.webheader.images == nil then
-            print("[Rotorweb]: webheader does not contain any images. Ignore.")
+            print("[Rotorweb] WARNING: webheader does not contain any images. Ignore.")
         else
             -- User has chosen to display a carousel header
             if (type == "carousel") or (type == "image") then
@@ -70,7 +70,7 @@ local function webheader(meta)
 
             -- Warning unknown type
             else
-                print("[Rotorweb]: wehbheader type `" .. type .. "` unknown. Ignored.")
+                print("[Rotorweb] WARNING: wehbheader type `" .. type .. "` unknown. Ignored.")
             end
         end -- end meta.webheader.images not nil
     end -- end meta.webheader not nil

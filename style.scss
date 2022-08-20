@@ -51,6 +51,19 @@ $dark: #343a40;
     }
 }
 
+ul {
+    li.fali {
+        list-style: none;
+        position: relative;
+        .fa-li {
+            padding-right: 0em;
+        }
+    }
+}
+
+/* Add brand color to orcid fa brand by default */
+.fa-orcid { color: #a5cd39; }
+
 #rotorweb-webheader-image {
     height: 15em;
     max-height: 15em;
