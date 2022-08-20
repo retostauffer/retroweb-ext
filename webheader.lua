@@ -1,9 +1,4 @@
 
-function test(x)
-    print("TESTING")
-end
-
-
 local function webheader(meta)
 
     print("[Rotorweb]: Executing header manipulation filter")
@@ -62,7 +57,6 @@ local function webheader(meta)
                                          .. to_json("description", description) .. ", "
                                          .. to_json("icon", icon) .. ", "
                                          .. to_json("bg", bg) .. "}, "
-                        quarto.utils.resolvePath(image)
                     end
                 end
                 res = res .. "];\n"
@@ -73,10 +67,8 @@ local function webheader(meta)
 
                 quarto.doc.includeText("in-header", res)
                 quarto.doc.includeFile("in-header", "scripts/webheader.html")
-                quarto.utils.dump(tmp)
-            -- E    lse if we find a header image: add header image
-            elseif type == "image" then
-                print("FOUND HEADER IMAGE")
+
+            -- Warning unknown type
             else
                 print("[Rotorweb]: wehbheader type `" .. type .. "` unknown. Ignored.")
             end
