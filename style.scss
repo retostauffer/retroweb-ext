@@ -30,13 +30,13 @@ $dark: #343a40;
 #rotorweb-webheader-image {
     position: relative;
     max-height: 15em;
+    display: block;
     overflow: hidden;
-    .image-contained {
-        position: absolute;
+    .img-contained {
+        /*position: absolute;*/
         object-fit: cover;
         object-position: 50% 0;
         width: 100% !important;
-        max-height: 15em;
     }
 }
 #rotorweb-webheader-carousel, #rotorweb-webheader-image {
