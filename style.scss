@@ -26,7 +26,14 @@ $dark: #343a40;
     .carousel-item {
         max-height: 15em;
     }
-
+}
+#rotorweb-webheader-image {
+    position: relative;
+    .image-contained {
+        position: absolute;
+    }
+}
+#rotorweb-webheader-carousel, #rotorweb-webheader-image {
     .carousel-caption {
         right: 0;
         left: 0;
@@ -56,6 +63,7 @@ ul {
         list-style: none;
         position: relative;
         .fa-li {
+            margin-left: 0.2em;
             padding-right: 0em;
         }
     }

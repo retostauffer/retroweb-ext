@@ -15,6 +15,30 @@
        return res;
     }
 
+    function webheader_add_content(x, rec) {
+        var grd = $("<div class='grid'></div>").appendTo($(x));
+
+        if (rec.icon === null) {
+            $("<div class='g-col-12'></div>").appendTo(grd)
+        } else {
+            $("<div class='g-col-2'>" +
+              "  <img class='icon' src='" + rec.icon + "'>" +
+              "</div>" +
+              "<div class='g-col-10'></div>").appendTo(grd)
+        } 
+
+        /* Appending title and caption, apply bakcground color (if specified ) */
+        if (rec.title) {
+            $("<div class='caption-title'></div>")
+                    .appendTo($(grd).children("div:last")).html(rec.title);
+        }
+        if (rec.description) {
+            $("<div class='caption-description'></div>")
+                    .appendTo($(grd).children("div:last")).html(rec.description);
+        }
+        if (rec.bg) { $(x).css("background-color", rec.bg) }
+    }
+
     /* Add custom <header> element with id #rotorweb-title-block-header
      * for the webheader feature. For both, type: carousel and type: image.
      * Returns the element added for further processing */
@@ -56,30 +80,11 @@
 
             /* Adding title + caption or icon + title + caption (gridded) */
             var cap = $("<div class='carousel-caption d-none d-md-block'>" +
-                        "  <div class='container-fluid'>" +
-                        "    <div class='grid'></div>" +
-                        "  </div>" +
+                        "  <div class='container-fluid'></div>" +
                         "</div>").appendTo(tmp)
-            var grd = $(cap).find(".grid")
-            if (rec.icon === null) {
-                $("<div class='g-col-12'></div>").appendTo(grd)
-            } else {
-                $("<div class='g-col-2'>" +
-                  "  <img class='icon' src='" + rec.icon + "'>" +
-                  "</div>" +
-                  "<div class='g-col-10'></div>").appendTo(grd)
-            } 
 
-            /* Appending title and caption, apply bakcground color (if specified ) */
-            if (rec.title) {
-                $("<div class='caption-title'></div>")
-                        .appendTo($(grd).children("div:last")).html(rec.title);
-            }
-            if (rec.description) {
-                $("<div class='caption-description'></div>")
-                        .appendTo($(grd).children("div:last")).html(rec.description);
-            }
-            if (rec.bg) { $(cap).css("background-color", rec.bg) }
+            /* Appending possibly gridded content */
+            webheader_add_content(cap, rec)
 
             /* adding indicator */
             $("<button type='button' data-bs-target='#" + elemID +
@@ -106,8 +111,14 @@
         var fluid  = $("<div id='" + elemID + "' class='container-fluid webheader'></div>").insertBefore($("#quarto-content"));
         /* If there are multiple images defined: take random one */
         var idx = parseInt(Math.random() * rotorweb_webheader_images.length);
+        var rec = rotorweb_webheader_images[idx];
 
-        $("<img id='" + elemID + "' class = 'img-contained' src='" + rotorweb_webheader_images[idx].image + "'></img>").appendTo(fluid)
+        $("<img id='" + elemID + "' class = 'img-contained' src='" + rec.image + "'></img>").appendTo(fluid)
+        var cap = $("<div class='carousel-caption d-none d-md-block'></div>").appendTo(fluid)
+
+        /* Appending possibly gridded content */
+        webheader_add_content(cap, rec)
+
     }
 
 
