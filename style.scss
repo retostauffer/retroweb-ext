@@ -6,6 +6,10 @@ $dark: #0c1826;
 
 $code-color: #049733; /* currentily identical to secondary */
 $code-bg:    #f6f9fa;
+
+$gray: gray;
+
+
 /*
 $success: #3e8d63;
 $info: #13101c;
@@ -15,6 +19,9 @@ $light: #f8f9fa;
 $dark: #343a40;
 */
 
+a {
+    text-decoration: none !important;
+}
 
 /*-- scss:rules --*/
 #rotorweb-webheader-carousel {
@@ -67,6 +74,7 @@ $dark: #343a40;
     background-color: $light;
     align-items: normal;
 }
+
 
 ul {
     li.fali {
@@ -135,6 +143,28 @@ main.content {
             }
         }
     }
+}
+
+/* Custom styling for #latest-news (custom listing) */
+#latest-news {
+    .listing-latest-title {
+        padding-bottom: 0;
+    }
+    .listing-latest-abstract {
+        padding-bottom: 1.5em;
+    }
+
+    table {
+        td:first-child { padding-left: 0;  }
+        td:last-child  { padding-right: 0; }
+
+        .listing-date {
+            font-size: 0.8em;
+            color: $gray;
+        }
+        margin-bottom: 0.2em;
+    }
+
 }
 
 /*-- scss:mixins --*/
