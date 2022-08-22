@@ -146,15 +146,14 @@ main.content {
 }
 
 /* Custom styling for #latest-news (custom listing) */
-#latest-news {
+#listing-latest-news, #listing-rotorweb-features {
     .listing-latest-title {
         padding-bottom: 0;
     }
     .listing-latest-abstract {
         padding-bottom: 1.5em;
     }
-
-    table {
+    .listings-table {
         td:first-child { padding-left: 0;  }
         td:last-child  { padding-right: 0; }
 
@@ -164,12 +163,23 @@ main.content {
         }
         margin-bottom: 0.2em;
     }
+}
+#listing-rotorweb-features {
+    .listings-table {
+        tbody {
+            border-top: none;
+            tr:last-child {
+                td { border-bottom: none; }
+            }
 
+        }
+    }
 }
 
 /*-- scss:mixins --*/
 
 /*-- scss:functions --*/
+
 
 /*-- scss:uses --*/
 
