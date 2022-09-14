@@ -19,7 +19,6 @@ local function ensureHtmlDeps()
     quarto.doc.addHtmlDependency({
         name = "rotorweb-bundle",
         scripts = {"dist/rotorweb-bundle.min.js"}
---        resources = resources
     })
 end
 

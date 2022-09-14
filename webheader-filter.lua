@@ -66,7 +66,6 @@ local function webheader(meta)
                 res = res .. "</script>\n"
 
                 quarto.doc.includeText("in-header", res)
-                quarto.doc.includeFile("in-header", "scripts/webheader.html")
 
             -- Warning unknown type
             else

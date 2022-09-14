@@ -57,7 +57,7 @@ $(document).ready(function() {
         var elemID = "rotorweb-webheader-carousel"
 
         /* Ensure that we only find it once? */
-        var res = "<div id='" + elemID + "' class='carousel slide' data-ride='carousel'>\n"
+        var res = "<div id='" + elemID + "' class='carousel slide' data-bs-ride='carousel'>\n"
                 + "  <div class='carousel-inner'></div>\n"
                 + "</div>"
 
@@ -97,7 +97,9 @@ $(document).ready(function() {
         $("#" + elemID + " .carousel-item:first").addClass("active")
         $("#" + elemID + " .carousel-indicators button:first").addClass("active")
 
-        $("#" + elemID).carousel({interval: rotorweb_webheader_options["interval"]}).carousel("cycle")
+        var carouselElement = $("#" + elemID);
+        var carousel = new bootstrap.Carousel(carouselElement,
+                            {interval: rotorweb_webheader_options["interval"]});
     }
 
     function rotorweb_webheader_image() {
@@ -121,9 +123,11 @@ $(document).ready(function() {
 
     }
 
-    if (rotorweb_webheader_type == "carousel") {
-        rotorweb_webheader_carousel()
-    } else if (rotorweb_webheader_type == "image") {
-        rotorweb_webheader_image()
+    if (typeof rotorweb_webheader_type !== "undefined") {
+        if (rotorweb_webheader_type == "carousel") {
+            rotorweb_webheader_carousel()
+        } else if (rotorweb_webheader_type == "image") {
+            rotorweb_webheader_image()
+        }
     }
 });
