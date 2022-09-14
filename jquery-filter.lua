@@ -6,7 +6,8 @@ local function ensureHtmlDeps()
     quarto.doc.addHtmlDependency({
         name = "jquery",
         version = "3.6.0",
-        scripts = {"node_modules/jquery/dist/jquery.min.js"}
+        scripts = {"js/rotorweb-bundle.min.js"}
+        --scripts = {"node_modules/jquery/dist/jquery.min.js"}
     })
 end
 
