@@ -13,8 +13,8 @@ contributes:
     html:
       theme:
         - style.scss
-          #css:
-          #  - node_modules/@fortawesome/fontawesome-free/css/all.min.css
+      css:
+        - node_modules/@fortawesome/fontawesome-free/css/all.min.css
       filters:
         - rotorweb-bundle.lua
         - webheader-filter.lua
